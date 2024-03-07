@@ -27,7 +27,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     return ElevatedButton(
       style: TextButton.styleFrom(
         textStyle: TextStyle(fontSize: fontSize10(context) * 1),
-        backgroundColor: AppConstants.buttonColorSecond,
+        backgroundColor: AppConstants.secondColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),

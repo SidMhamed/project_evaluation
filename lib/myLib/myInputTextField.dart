@@ -3,6 +3,7 @@ import 'app_constants.dart';
 
 class myInputTextField extends StatefulWidget {
   String? labelText;
+  String? hintText;
   TextEditingController controller;
   bool obscured;
   IconData? icon;
@@ -10,7 +11,8 @@ class myInputTextField extends StatefulWidget {
 
   myInputTextField({
     super.key,
-    this.labelText,
+    required this.labelText,
+    this.hintText,
     required this.controller,
     this.typeInputTextField = TextInputType.text,
     this.obscured = false,
@@ -38,22 +40,27 @@ class _myInputTextFieldState extends State<myInputTextField> {
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             labelText: widget.labelText,
-            hintTextDirection: TextDirection.rtl,
+            hintText: widget.hintText,
+            hintTextDirection: TextDirection.ltr,
             hintStyle: const TextStyle(
               color: Colors.grey,
-              fontSize: 18,
+              fontSize: 15,
             ),
             suffixIcon: widget.obscured
                 ? IconButton(
-                    icon: Icon(widget.icon),
+                    icon: Icon(Icons.visibility),
                     onPressed: () {
                       setState(() {
                         widget.obscured = !widget.obscured;
                       });
                     },
-                    color: AppConstants.primaryColor,
+                    color: AppConstants.secondColor,
                   )
                 : null,
+            prefixIcon: Icon(
+              widget.icon,
+              color: AppConstants.secondColor,
+            ),
           ),
         ),
       ),

@@ -1,23 +1,23 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:project_evaluation/Controllers/authController.dart';
-import 'package:project_evaluation/Views/screens/RegisterScreen.dart';
+import 'package:project_evaluation/Views/screens/LoginScreen.dart';
+
 import '../../myLib/config.dart';
 import '../../myLib/myButtonWidget.dart';
 import '../../myLib/myInputTextField.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   AuthController auth = AuthController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,23 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
               obscured: true,
               icon: Icons.lock,
             ),
-            sizedBox(fullHeight(context) * 0.02),
-            Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: Text(
-                "Mot de passe oublié ?",
-                style: TextStyle(
-                  fontSize: fontSize10(context),
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
             sizedBox(fullHeight(context) * 0.05),
             ButtonWidget(
-              title: 'Se connecter',
+              title: 'Créer un compte',
               onPressed: () {
-                auth.signIn(
+                auth.signUp(
                   _emailController.text,
                   _passwordController.text,
                   context,
@@ -77,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             sizedBox(fullHeight(context) * 0.03),
             RichText(
               text: TextSpan(
-                text: "Vous n'avez pas de compte ?",
+                text: "Vous avez déjà un compte?",
                 style:
                     TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
                 children: <TextSpan>[
@@ -87,10 +75,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const RegisterScreen()),
+                              builder: (context) => LoginScreen(),
+                            ),
                           );
                         },
-                      text: 'S\'inscrire',
+                      text: 'Connectez-vous ici',
                       style: TextStyle(
                           color: Colors.pink, fontWeight: FontWeight.w500)),
                 ],
