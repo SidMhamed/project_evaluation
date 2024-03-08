@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_evaluation/Controllers/authController.dart';
 import 'package:project_evaluation/Views/screens/RegisterScreen.dart';
 import '../../myLib/config.dart';
-import '../../myLib/myButtonWidget.dart';
+import '../../myLib/myButton.dart';
 import '../../myLib/myInputTextField.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             sizedBox(fullHeight(context) * 0.05),
-            ButtonWidget(
+            MyButton(
               title: 'Se connecter',
               onPressed: () {
                 auth.signIn(
@@ -66,12 +66,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   _passwordController.text,
                   context,
                 );
-                print("********************************");
-                print('Email : ' +
-                    _emailController.text +
-                    '  Password :' +
-                    _passwordController.text);
-                print("********************************");
               },
             ),
             sizedBox(fullHeight(context) * 0.03),

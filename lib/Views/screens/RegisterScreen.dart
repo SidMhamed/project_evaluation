@@ -4,7 +4,7 @@ import 'package:project_evaluation/Controllers/authController.dart';
 import 'package:project_evaluation/Views/screens/LoginScreen.dart';
 
 import '../../myLib/config.dart';
-import '../../myLib/myButtonWidget.dart';
+import '../../myLib/myButton.dart';
 import '../../myLib/myInputTextField.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -46,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               icon: Icons.lock,
             ),
             sizedBox(fullHeight(context) * 0.05),
-            ButtonWidget(
+            MyButton(
               title: 'Créer un compte',
               onPressed: () {
                 auth.signUp(
@@ -54,12 +54,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   _passwordController.text,
                   context,
                 );
-                print("********************************");
-                print('Email : ' +
-                    _emailController.text +
-                    '  Password :' +
-                    _passwordController.text);
-                print("********************************");
               },
             ),
             sizedBox(fullHeight(context) * 0.03),

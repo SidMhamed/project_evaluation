@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
-class ImagePickerHelper {
+class MyImagePicker {
   final _picker = ImagePicker();
 
   Future<File?> getImageFromGallery() async {

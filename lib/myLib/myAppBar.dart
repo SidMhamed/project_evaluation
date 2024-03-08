@@ -20,6 +20,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: AppConstants.secondColor,
         ),
       ),
+      iconTheme: IconThemeData(color: AppConstants.secondColor),
       centerTitle: true,
       backgroundColor: AppConstants.primaryColor,
       actions: <Widget>[
