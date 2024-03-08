@@ -9,7 +9,6 @@ class myInputTextField extends StatefulWidget {
   bool obscured;
   IconData? icon;
   TextInputType typeInputTextField;
-  bool haReadOnly;
   Function()? onPressed;
 
   myInputTextField({
@@ -20,7 +19,6 @@ class myInputTextField extends StatefulWidget {
     this.typeInputTextField = TextInputType.text,
     this.obscured = false,
     this.icon,
-    this.haReadOnly = false,
     this.onPressed,
   });
 
@@ -28,6 +26,7 @@ class myInputTextField extends StatefulWidget {
   State<myInputTextField> createState() => _myInputTextFieldState();
 }
 
+// ignore: camel_case_types
 class _myInputTextFieldState extends State<myInputTextField> {
   @override
   Widget build(BuildContext context) {
@@ -40,14 +39,14 @@ class _myInputTextFieldState extends State<myInputTextField> {
           controller: widget.controller,
           keyboardType: widget.typeInputTextField,
           obscureText: widget.obscured,
-          readOnly: widget.haReadOnly,
           onTap: widget.onPressed,
           decoration: InputDecoration(
             border: MaterialStateOutlineInputBorder.resolveWith(
-                (states) => const OutlineInputBorder(
-                      borderSide: BorderSide(color: AppConstants.secondColor),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    )),
+              (states) => const OutlineInputBorder(
+                borderSide: BorderSide(color: AppConstants.secondColor),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+            ),
             labelText: widget.labelText,
             hintText: widget.hintText,
             labelStyle: const TextStyle(color: AppConstants.secondColor),

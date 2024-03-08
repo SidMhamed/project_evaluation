@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:project_evaluation/Models/blog.dart';
+import 'package:project_evaluation/myLib/image_picker.dart';
 
 class BlogController {
   final CollectionReference _blogCollectionReference =
       FirebaseFirestore.instance.collection("blogs");
-  final FirebaseStorage _storage = FirebaseStorage.instance;
+  final MyImagePicker _myImagePicker = MyImagePicker();
 
   Future<void> addBlog({
     String? title,
@@ -15,7 +15,7 @@ class BlogController {
     File? image,
   }) async {
     try {
-      String imageURL = await _uploadImage(image!);
+      String imageURL = await _myImagePicker.uploadImage(image!);
       await _blogCollectionReference.add({
         'title': title,
         'auteur': auteur,
@@ -55,24 +55,6 @@ class BlogController {
       await _blogCollectionReference.doc(blogId).delete();
     } catch (e) {
       print("Error deleting blog post: $e");
-      throw e;
-    }
-  }
-
-  Future<String> _uploadImage(File imageFile) async {
-    try {
-      String filePath =
-          'images/${DateTime.now().millisecondsSinceEpoch}.${imageFile.path.split('.').last}';
-      Reference ref = _storage.ref().child(filePath);
-
-      UploadTask uploadTask = ref.putFile(imageFile);
-
-      TaskSnapshot snapshot = await uploadTask;
-      String imageURL = await snapshot.ref.getDownloadURL();
-
-      return imageURL;
-    } catch (e) {
-      print('Error uploading image: $e');
       throw e;
     }
   }

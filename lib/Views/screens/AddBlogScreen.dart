@@ -1,5 +1,5 @@
+// ignore: file_names
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:project_evaluation/Controllers/blogController.dart';
 import 'package:project_evaluation/myLib/app_constants.dart';
@@ -63,12 +63,13 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Message"),
-            content: Text('Please fill in all fields and select an image'),
+            title: const Text("Message"),
+            content:
+                const Text('Please fill in all fields and select an image'),
             actions: [
               TextButton(
                 onPressed: () {},
-                child: Text("Ok"),
+                child: const Text("Ok"),
               ),
             ],
           );
@@ -124,8 +125,6 @@ class _AddBlogScreenState extends State<AddBlogScreen> {
                     )
                   : MyButton(
                       title: 'ajouter une image',
-                      // haReadOnly: true,
-                      // icon: Icons.image,
                       onPressed: () {
                         _getImageFromGallery(); // Call image picker on tap
                       },
