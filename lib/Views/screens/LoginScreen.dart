@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:project_evaluation/Controllers/authController.dart';
 import 'package:project_evaluation/Views/screens/RegisterScreen.dart';
+import 'package:project_evaluation/myLib/app_constants.dart';
 import '../../myLib/config.dart';
 import '../../myLib/myButton.dart';
 import '../../myLib/myInputTextField.dart';
@@ -28,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Image.asset("assets/images/logo3.png",
                 height: fullHeight(context) * 0.4),
-            sizedBox(fullHeight(context) * 0.003),
+            sizedBox(fullHeight(context) * 0.002),
             myInputTextField(
               labelText: 'Email',
               hintText: 'Entrer votre Email',

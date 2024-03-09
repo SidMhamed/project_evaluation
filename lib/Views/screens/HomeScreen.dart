@@ -4,6 +4,7 @@ import 'package:project_evaluation/Models/blog.dart';
 import 'package:project_evaluation/Views/screens/AddBlogScreen.dart';
 import 'package:project_evaluation/Views/screens/DetielsScreen.dart';
 import 'package:project_evaluation/myLib/app_constants.dart';
+import 'package:project_evaluation/myLib/menuActions.dart';
 import 'package:project_evaluation/myLib/myAppBar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -49,17 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       leading: Image.network(blogs[index].image),
                       trailing: IconButton(
                         icon: const Icon(
-                          Icons.delete,
+                          Icons.menu,
                           color: AppConstants.secondColor,
                         ),
                         onPressed: () async {
-                          try {
-                            await _blogController.deleteBlog(blogs[index].id);
-                            _refreshBlogs();
-                            print("delete success");
-                          } catch (e) {
-                            print("Error $e");
-                          }
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return MenuActions(
+                                  blogId: blogs[index].id,
+                                  refreshCallback: _refreshBlogs,
+                                );
+                              });
                         },
                       ),
                       onTap: () {
