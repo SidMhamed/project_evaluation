@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project_evaluation/UI/widgets/myAppBar.dart';
 import 'package:project_evaluation/data/blog.dart';
 
+import '../../myLib/app_constants.dart';
+
 class DetielsScreen extends StatelessWidget {
   final Blog blog;
   DetielsScreen({
@@ -12,7 +14,8 @@ class DetielsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: "Blogs"),
+      backgroundColor: AppConstants.backgroundColor,
+      appBar: MyAppBar(title: "${blog.title}"),
       body: Center(
         child: Container(
           margin: const EdgeInsets.all(16.0),
@@ -27,6 +30,28 @@ class DetielsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(blog.contenu),
+              ),
+              Container(
+                color: AppConstants.textColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.edit,
+                        color: AppConstants.secondColor,
+                      ),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.ios_share,
+                        color: AppConstants.secondColor,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

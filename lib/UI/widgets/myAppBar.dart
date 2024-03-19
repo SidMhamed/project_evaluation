@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:project_evaluation/UI/Screens/LoginScreen.dart';
-import 'package:project_evaluation/business/blogManager.dart';
 import 'package:project_evaluation/myLib/app_constants.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   final String title;
+  final Widget? hasLeading;
   MyAppBar({
     super.key,
     this.title = "Blogs",
+    this.hasLeading,
   });
   @override
   Widget build(BuildContext context) {
@@ -25,20 +25,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: AppConstants.secondColor),
       centerTitle: true,
       backgroundColor: AppConstants.primaryColor,
-      leading: Consumer<BlogManager>(
-        builder: (context, blogManager, _) {
-          return Align(
-            alignment: Alignment.center,
-            child: Text(
-              "${blogManager.getBlogCounter()}",
-              style: TextStyle(
-                fontSize: 30,
-                color: AppConstants.secondColor,
-              ),
-            ),
-          );
-        },
-      ),
+      leading: hasLeading,
       actions: <Widget>[
         IconButton(
           icon: const Icon(

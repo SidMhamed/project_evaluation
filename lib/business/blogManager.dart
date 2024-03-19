@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:project_evaluation/business/servises/blogServise.dart';
-import 'package:project_evaluation/data/blog.dart';
 
 enum LoadState { initial, loading, loaded, error }
 

@@ -25,7 +25,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppConstants.backgroundColor,
-      appBar: MyAppBar(title: "Bolgs"),
+      appBar: MyAppBar(
+        title: "Bolgs",
+        hasLeading: Consumer<BlogManager>(
+          builder: (context, blogManager, _) {
+            return Align(
+              alignment: Alignment.center,
+              child: Text(
+                "${blogManager.getBlogCounter()}",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: AppConstants.secondColor,
+                ),
+              ),
+            );
+          },
+        ),
+      ),
       body: Center(
         child: BlogList(),
       ),
