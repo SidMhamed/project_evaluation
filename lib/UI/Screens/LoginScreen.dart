@@ -8,7 +8,7 @@ import '../widgets/myButton.dart';
 import '../widgets/myInputTextField.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
