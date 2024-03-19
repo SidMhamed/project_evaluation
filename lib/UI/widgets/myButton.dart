@@ -1,7 +1,8 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'app_constants.dart';
-import 'config.dart';
+
+import '../../myLib/app_constants.dart';
+import '../../myLib/config.dart';
 
 class MyButton extends StatefulWidget {
   final Function()? onPressed;

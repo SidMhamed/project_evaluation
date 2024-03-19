@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "61688489398",
-    "project_id": "project-evaluation-6bea7",
-    "storage_bucket": "project-evaluation-6bea7.appspot.com"
+    "project_number": "99065433063",
+    "project_id": "blogs-ca699",
+    "storage_bucket": "blogs-ca699.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:61688489398:android:9a319f5d2c2df9e27f8d17",
+        "mobilesdk_app_id": "1:99065433063:android:086acef3354aeba9efcb42",
         "android_client_info": {
           "package_name": "com.example.project_evaluation"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBnziimWMOTUcjWXfyDqXgH81Y1Pz2ZH2o"
+          "current_key": "AIzaSyBNRYz8n51JWI4z6BFCtD7y3wq4ZV-OFvs"
         }
       ],
       "services": {

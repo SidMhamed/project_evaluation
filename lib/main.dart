@@ -1,14 +1,26 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'Views/screens/LoginScreen.dart';
+import 'package:project_evaluation/UI/Screens/HomeScreen.dart';
+import 'package:project_evaluation/UI/Screens/LoginScreen.dart';
+import 'package:project_evaluation/business/authentications/authentication.dart';
+import 'package:project_evaluation/business/blogManager.dart';
 import 'package:project_evaluation/firebase_options.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<BlogManager>(create: (_) => BlogManager()),
+        ChangeNotifierProvider<Authentication>(create: (_) => Authentication()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }

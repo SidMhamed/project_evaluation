@@ -1,27 +1,23 @@
-import 'dart:async';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:project_evaluation/Controllers/authController.dart';
-import 'package:project_evaluation/Views/screens/RegisterScreen.dart';
-import 'package:project_evaluation/myLib/app_constants.dart';
-import '../../myLib/config.dart';
-import '../../myLib/myButton.dart';
-import '../../myLib/myInputTextField.dart';
+import 'package:project_evaluation/UI/Screens/LoginScreen.dart';
+import 'package:project_evaluation/business/authentications/authentication.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../../myLib/config.dart';
+import '../widgets/myButton.dart';
+import '../widgets/myInputTextField.dart';
+
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  AuthController auth = AuthController();
-
+  Authentication auth = Authentication();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Image.asset("assets/images/logo3.png",
                 height: fullHeight(context) * 0.4),
-            sizedBox(fullHeight(context) * 0.002),
+            sizedBox(fullHeight(context) * 0.003),
             myInputTextField(
               labelText: 'Email',
               hintText: 'Entrer votre Email',
@@ -49,23 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
               obscured: true,
               icon: Icons.lock,
             ),
-            sizedBox(fullHeight(context) * 0.02),
-            Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: Text(
-                "Mot de passe oublié ?",
-                style: TextStyle(
-                  fontSize: fontSize10(context),
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
             sizedBox(fullHeight(context) * 0.05),
             MyButton(
-              title: 'Se connecter',
+              title: 'Créer un compte',
               onPressed: () {
-                auth.signIn(
+                auth.signUp(
                   _emailController.text,
                   _passwordController.text,
                   context,
@@ -75,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
             sizedBox(fullHeight(context) * 0.03),
             RichText(
               text: TextSpan(
-                text: "Vous n'avez pas de compte ?",
+                text: "Vous avez déjà un compte?",
                 style:
                     TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
                 children: <TextSpan>[
@@ -85,10 +69,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const RegisterScreen()),
+                              builder: (context) => LoginScreen(),
+                            ),
                           );
                         },
-                      text: 'S\'inscrire',
+                      text: 'Connectez-vous ici',
                       style: TextStyle(
                           color: Colors.pink, fontWeight: FontWeight.w500)),
                 ],

@@ -43,6 +43,7 @@ dependencies:
   firebase_storage: ^11.6.8
   alert_dialog: ^1.0.2
   flutter_launcher_icons: ^0.13.1
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

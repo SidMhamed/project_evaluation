@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_evaluation/Models/blog.dart';
-import 'package:project_evaluation/myLib/myAppBar.dart';
+import 'package:project_evaluation/UI/widgets/myAppBar.dart';
+import 'package:project_evaluation/data/blog.dart';
 
 class DetielsScreen extends StatelessWidget {
   final Blog blog;

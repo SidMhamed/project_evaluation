@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_evaluation/Views/screens/LoginScreen.dart';
+import 'package:project_evaluation/UI/Screens/LoginScreen.dart';
+import 'package:project_evaluation/business/blogManager.dart';
 import 'package:project_evaluation/myLib/app_constants.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -23,6 +25,20 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: AppConstants.secondColor),
       centerTitle: true,
       backgroundColor: AppConstants.primaryColor,
+      leading: Consumer<BlogManager>(
+        builder: (context, blogManager, _) {
+          return Align(
+            alignment: Alignment.center,
+            child: Text(
+              "${blogManager.getBlogCounter()}",
+              style: TextStyle(
+                fontSize: 30,
+                color: AppConstants.secondColor,
+              ),
+            ),
+          );
+        },
+      ),
       actions: <Widget>[
         IconButton(
           icon: const Icon(
