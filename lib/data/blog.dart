@@ -19,7 +19,6 @@ class Blog {
       );
 
   Map<String, dynamic> toMap() => {
-        // 'id': id,
         'title': title,
         'auteur': auteur,
         'contenu': contenu,
